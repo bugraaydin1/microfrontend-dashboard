@@ -1,5 +1,14 @@
+import React, { Suspense, lazy } from "react";
+import MarketingApp from "./components/MarketingApp";
+
+console.log("container!");
+
 const App = () => {
-	return <h1>Container</h1>;
+	return (
+		<>
+			<MarketingApp />
+		</>
+	);
 };
 
 export default App;
