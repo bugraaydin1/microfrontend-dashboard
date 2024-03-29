@@ -16,6 +16,7 @@ module.exports = merge(webpackCommon, {
 				// [import-name] : "[remote-app-name]@[remote-url]"
 				marketing: "marketing@http://localhost:8001/remoteEntry.js",
 			},
+			shared: ["react@^18.2.0", "react-dom@^18.2.0"],
 		}),
 		new HtmlWebpackPlugin({
 			template: "./public/index.html",
