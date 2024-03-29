@@ -6,9 +6,7 @@ module.exports = merge(webpackCommon, {
 	mode: "development",
 	devServer: {
 		port: 8001,
-		historyApiFallback: {
-			index: "index.html",
-		},
+		historyApiFallback: true,
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
