@@ -9,6 +9,7 @@ module.exports = merge(webpackCommon, {
 	mode: "production",
 	output: {
 		filename: "[name].[contenthash].js",
+		publicPath: "/container/latest/",
 	},
 	plugins: [
 		new ModuleFederationPlugin({
