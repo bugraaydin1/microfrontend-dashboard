@@ -1,13 +1,16 @@
-import React, { Suspense, lazy } from "react";
-import MarketingApp from "./components/MarketingApp";
-
-console.log("container!!");
+import React from "react";
+import { RouterProvider } from "react-router-dom";
+import { ThemeProvider } from "@emotion/react";
+import { CssBaseline } from "@mui/material";
+import { router } from "./routes";
+import { theme } from "./theme";
 
 const App = () => {
 	return (
-		<>
-			<MarketingApp />
-		</>
+		<ThemeProvider theme={theme}>
+			<CssBaseline />
+			<RouterProvider router={router} />
+		</ThemeProvider>
 	);
 };
 
