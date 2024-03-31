@@ -38,3 +38,15 @@ Monorepo or seperate repos could be used, because of these microfrontend apps wi
 ### Dashboard
 
 - Vue
+
+## Env
+
+#### Add this env variables in github or in your pipeline
+
+```bash
+AWS_ACCESS_KEY_ID
+AWS_DISTRIBUTION_ID
+AWS_S3_BUCKET_NAME
+AWS_SECRET_ACCESS_KEY
+PRODUCTION_DOMAIN
+```

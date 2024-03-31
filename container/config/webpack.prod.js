@@ -15,7 +15,7 @@ module.exports = merge(webpackCommon, {
 		new ModuleFederationPlugin({
 			name: packageJson.name,
 			remotes: {
-				marketing: `marketing@${domain}/marketing/remoteEntry.js`,
+				marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
 			},
 			shared: packageJson.dependencies,
 		}),
