@@ -10,7 +10,7 @@ module.exports = merge(webpackCommon, {
 		historyApiFallback: true,
 	},
 	output: {
-		publicPath: "/",
+		publicPath: "http://localhost:8002/",
 	},
 	plugins: [
 		new ModuleFederationPlugin({
