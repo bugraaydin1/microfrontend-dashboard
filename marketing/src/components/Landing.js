@@ -65,7 +65,7 @@ export default function Landing() {
 									</Link>
 								</Grid>
 								<Grid item>
-									<Link href="/pricing">
+									<Link component={RouterLink} to="/pricing">
 										<Button variant="outlined" color="primary">
 											Pricing
 										</Button>

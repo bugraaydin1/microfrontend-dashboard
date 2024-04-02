@@ -1,14 +1,37 @@
-import { createBrowserRouter } from "react-router-dom";
+import {
+	Outlet,
+	createMemoryRouter,
+	createBrowserRouter,
+} from "react-router-dom";
 import Landing from "./components/Landing";
 import Pricing from "./components/Pricing";
+import useSyncGlobalRouter from "../hooks/useSyncGlobalRouter";
 
-export const router = createBrowserRouter([
+const RouterHandler = () => {
+	useSyncGlobalRouter();
+
+	return <Outlet />;
+};
+
+const isDevelopment = process.env.NODE_ENV === "development";
+
+const routes = [
 	{
 		path: "/",
-		element: <Landing />,
+		element: <RouterHandler />,
+		children: [
+			{
+				index: true,
+				element: <Landing />,
+			},
+			{
+				path: "pricing",
+				element: <Pricing />,
+			},
+		],
 	},
-	{
-		path: "/pricing",
-		element: <Pricing />,
-	},
-]);
+];
+
+export const router = isDevelopment
+	? createBrowserRouter(routes)
+	: createMemoryRouter(routes);
