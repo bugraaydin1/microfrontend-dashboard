@@ -9,14 +9,14 @@ module.exports = merge(webpackCommon, {
 	mode: "production",
 	output: {
 		filename: "[name].[contenthash].js",
-		publicPath: "/container/latest/",
+		publicPath: "/auth/latest/",
 	},
 	plugins: [
 		new ModuleFederationPlugin({
 			name: packageJson.name,
-			remotes: {
-				marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
-				auth: `auth@${domain}/remoteEntry.js`,
+			filename: "remoteEntry.js",
+			exposes: {
+				"./AuthApp": "./src/bootstrap",
 			},
 			shared: packageJson.dependencies,
 		}),
