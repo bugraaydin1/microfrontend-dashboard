@@ -3,6 +3,7 @@ import {
 	Route,
 	Routes,
 	createBrowserRouter,
+	useRouteError,
 } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import MarketingApp from "./components/MarketingApp";
@@ -13,6 +14,7 @@ export const router = createBrowserRouter([
 	{
 		path: "/auth",
 		element: <AppLayout />,
+		errorElement: <ErrorBoundary />,
 		children: [
 			{
 				path: "*",
@@ -23,20 +25,23 @@ export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <AppLayout />,
+		errorElement: <ErrorBoundary />,
 		children: [
 			{
 				index: true,
 				element: <MarketingApp />,
 			},
 			{
-				/* index: true, */
 				path: "*",
 				element: <MarketingApp />,
 			},
-			/* {
-				path: "pricing",
-				element: <MarketingApp />,
-			}, */
 		],
 	},
 ]);
+
+function ErrorBoundary() {
+	const error = useRouteError();
+	console.error(message);
+
+	return <div>Page not found!</div>;
+}

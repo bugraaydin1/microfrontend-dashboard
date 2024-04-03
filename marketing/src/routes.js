@@ -2,6 +2,8 @@ import {
 	Outlet,
 	createMemoryRouter,
 	createBrowserRouter,
+	useRouteError,
+	redirect,
 } from "react-router-dom";
 import Landing from "./components/Landing";
 import Pricing from "./components/Pricing";
@@ -19,6 +21,7 @@ const routes = [
 	{
 		path: "/",
 		element: <RouterHandler />,
+		errorElement: <ErrorBoundary />,
 		children: [
 			{
 				index: true,
@@ -31,6 +34,19 @@ const routes = [
 		],
 	},
 ];
+
+function ErrorBoundary() {
+	let {
+		error: { message },
+	} = useRouteError();
+	console.error(message);
+
+	const redirectUrl = message.match(/"(.*)"/)?.[1];
+
+	redirect(redirectUrl);
+	// Uncaught ReferenceError: path is not defined
+	return <div>Page not found !</div>;
+}
 
 export const router = (initialPathname) =>
 	isDevelopment

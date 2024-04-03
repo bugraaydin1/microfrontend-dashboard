@@ -2,6 +2,8 @@ import {
 	Outlet,
 	createMemoryRouter,
 	createBrowserRouter,
+	useRouteError,
+	redirect,
 } from "react-router-dom";
 import useSyncGlobalRouter from "../hooks/useSyncGlobalRouter";
 import SignIn from "./components/SignIn";
@@ -19,6 +21,7 @@ const routes = [
 	{
 		path: "/auth",
 		element: <RouterHandler />,
+		errorElement: <ErrorBoundary />,
 		children: [
 			{
 				path: "signin",
@@ -32,9 +35,16 @@ const routes = [
 	},
 ];
 
+function ErrorBoundary() {
+	const error = useRouteError();
+	console.error(error);
+
+	return <div>Page not found!</div>;
+}
+
 export const router = (initialPathname) =>
 	isDevelopment
 		? createBrowserRouter(routes)
-		: createMemoryRouter(routes, {
+		: createMemoryRouter([routes], {
 				initialEntries: [initialPathname],
 		  });
