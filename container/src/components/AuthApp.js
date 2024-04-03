@@ -19,7 +19,7 @@ const AuthApp = () => {
 		}
 	}, []);
 
-	return <div id="auth" ref={appRef} />;
+	return <div ref={appRef} />;
 };
 
 export default AuthApp;
