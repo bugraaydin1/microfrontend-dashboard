@@ -16,7 +16,7 @@ module.exports = merge(webpackCommon, {
 			name: packageJson.name,
 			remotes: {
 				marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
-				auth: `auth@${domain}/remoteEntry.js`,
+				auth: `auth@${domain}/auth/latest/remoteEntry.js`,
 			},
 			shared: packageJson.dependencies,
 		}),
