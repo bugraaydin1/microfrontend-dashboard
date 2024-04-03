@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const useSyncRemoteRouter = ({ basename = "" }) => {
+const useSyncRemoteRouter = (basename = "") => {
 	const location = useLocation();
 	const navigate = useNavigate();
 
@@ -33,9 +33,13 @@ const useSyncRemoteRouter = ({ basename = "" }) => {
 
 	/* useEffect(() => {
 		if (location.pathname.startsWith(basename)) {
+			console.log(
+				"sync remote router:",
+				location.pathname.replace(basename, "")
+			);
 			window.dispatchEvent(
 				new CustomEvent("hostNavigate", {
-					detail: location.pathname, //.replace(basename, ""),
+					detail: location.pathname.replace(basename, ""),
 				})
 			);
 		}

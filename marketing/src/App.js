@@ -6,10 +6,10 @@ import { useNavigation, useLocation } from "react-router-dom";
 import { router } from "./routes";
 import { theme } from "./theme";
 
-export default function App() {
+export default function App({ initialPathname }) {
 	return (
 		<ThemeProvider theme={theme}>
-			<RouterProvider router={router} />
+			<RouterProvider router={router(initialPathname)} />
 		</ThemeProvider>
 	);
 }

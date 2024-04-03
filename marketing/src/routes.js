@@ -32,6 +32,9 @@ const routes = [
 	},
 ];
 
-export const router = isDevelopment
-	? createBrowserRouter(routes)
-	: createMemoryRouter(routes);
+export const router = (initialPathname) =>
+	isDevelopment
+		? createBrowserRouter(routes)
+		: createMemoryRouter(routes, {
+				initialEntries: [initialPathname],
+		  });

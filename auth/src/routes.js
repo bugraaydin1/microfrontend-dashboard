@@ -8,7 +8,7 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 
 const RouterHandler = () => {
-	useSyncGlobalRouter(/* "/auth" */);
+	useSyncGlobalRouter();
 
 	return <Outlet />;
 };
@@ -32,6 +32,9 @@ const routes = [
 	},
 ];
 
-export const router = isDevelopment
-	? createBrowserRouter(routes)
-	: createMemoryRouter(routes);
+export const router = (initialPathname) =>
+	isDevelopment
+		? createBrowserRouter(routes)
+		: createMemoryRouter(routes, {
+				initialEntries: [initialPathname],
+		  });

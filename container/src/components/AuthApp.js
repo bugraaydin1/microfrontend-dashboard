@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { mount } from "marketing/MarketingApp";
+import { mount } from "auth/AuthApp";
 
-const MarketingApp = () => {
+const AuthApp = () => {
 	const appRef = useRef();
 	const location = useLocation();
 
@@ -12,7 +12,7 @@ const MarketingApp = () => {
 		}
 	}, []);
 
-	return <div ref={appRef} />;
+	return <div id="auth" ref={appRef} />;
 };
 
-export default MarketingApp;
+export default AuthApp;
