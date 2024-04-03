@@ -45,7 +45,7 @@ function ErrorBoundary() {
 
 	redirect(redirectUrl);
 	// Uncaught ReferenceError: path is not defined
-	return <div>Page not found !</div>;
+	return <div>Page not found!</div>;
 }
 
 export const router = (initialPathname) =>

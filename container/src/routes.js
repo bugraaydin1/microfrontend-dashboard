@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import {
 	BrowserRouter,
 	Route,
@@ -6,9 +7,13 @@ import {
 	useRouteError,
 } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
-import MarketingApp from "./components/MarketingApp";
 import Header from "./components/Header";
-import AuthApp from "./components/AuthApp";
+import Loading from "./components/Loading";
+
+const MarketingApp = lazy(() => import("./components/MarketingApp"));
+("./components/MarketingApp");
+const AuthApp = lazy(() => import("./components/AuthApp"));
+("./components/AuthApp");
 
 export const router = createBrowserRouter([
 	{
@@ -18,7 +23,11 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				path: "*",
-				element: <AuthApp />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<AuthApp />
+					</Suspense>
+				),
 			},
 		],
 	},
@@ -29,11 +38,19 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <MarketingApp />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<MarketingApp />,
+					</Suspense>
+				),
 			},
 			{
 				path: "*",
-				element: <MarketingApp />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<MarketingApp />,
+					</Suspense>
+				),
 			},
 		],
 	},
@@ -41,7 +58,7 @@ export const router = createBrowserRouter([
 
 function ErrorBoundary() {
 	const error = useRouteError();
-	console.error(message);
+	console.error(error);
 
 	return <div>Page not found!</div>;
 }
