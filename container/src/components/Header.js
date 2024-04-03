@@ -6,8 +6,6 @@ import { useHostContext } from "../../context/hostContext";
 const Header = () => {
 	const { signedIn, setSignedIn } = useHostContext();
 
-	console.log("header ctx:", signedIn);
-
 	const onClick = () => {
 		if (signedIn) {
 			setSignedIn(false);

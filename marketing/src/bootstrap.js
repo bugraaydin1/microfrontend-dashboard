@@ -5,8 +5,6 @@ import App from "./App";
 const mount = (element, { initialPathname }) => {
 	const root = createRoot(element);
 
-	console.log("marketing initpath:", initialPathname);
-
 	root.render(<App initialPathname={initialPathname} />);
 };
 

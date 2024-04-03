@@ -33,10 +33,6 @@ const useSyncRemoteRouter = (basename = "") => {
 
 	/* useEffect(() => {
 		if (location.pathname.startsWith(basename)) {
-			console.log(
-				"sync remote router:",
-				location.pathname.replace(basename, "")
-			);
 			window.dispatchEvent(
 				new CustomEvent("hostNavigate", {
 					detail: location.pathname.replace(basename, ""),

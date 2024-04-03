@@ -107,8 +107,8 @@ export default function SignUp({ onSignIn }) {
 					<Button
 						fullWidth
 						sx={{ my: 3 }}
-						type="submit"
 						variant="contained"
+						type="submit"
 						color="primary"
 						onClick={onSignIn}
 					>
