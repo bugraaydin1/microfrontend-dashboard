@@ -1,12 +1,19 @@
 import React, { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useHostContext } from "../../context/hostContext";
 import { mount } from "auth/AuthApp";
 
 const AuthApp = () => {
 	const appRef = useRef();
 	const location = useLocation();
-	const { setSignedIn } = useHostContext();
+	const navigate = useNavigate();
+	const { signedIn, setSignedIn } = useHostContext();
+
+	useEffect(() => {
+		if (signedIn) {
+			navigate({ pathname: "/dashboard" });
+		}
+	}, [signedIn]);
 
 	useEffect(() => {
 		if (appRef.current) {

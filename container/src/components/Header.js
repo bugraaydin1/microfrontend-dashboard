@@ -33,8 +33,8 @@ const Header = () => {
 					color="primary"
 					variant="outlined"
 					component={RouterLink}
-					to={signedIn ? "/" : "/auth/signin"}
 					onClick={onClick}
+					to={signedIn ? "/" : "/auth/signin"}
 					sx={{ my: 1, mx: 1.5 }}
 				>
 					{signedIn ? "Logout" : "Login"}

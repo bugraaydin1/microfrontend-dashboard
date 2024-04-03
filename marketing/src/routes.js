@@ -36,15 +36,9 @@ const routes = [
 ];
 
 function ErrorBoundary() {
-	let {
-		error: { message },
-	} = useRouteError();
-	console.error(message);
+	const error = useRouteError();
+	console.error(error);
 
-	const redirectUrl = message.match(/"(.*)"/)?.[1];
-
-	redirect(redirectUrl);
-	// Uncaught ReferenceError: path is not defined
 	return <div>Page not found!</div>;
 }
 

@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import {
 	BrowserRouter,
+	Navigate,
 	Route,
 	Routes,
 	createBrowserRouter,
@@ -8,11 +9,11 @@ import {
 } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import Loading from "./components/Loading";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-const MarketingApp = lazy(() => import("./components/MarketingApp"));
-("./components/MarketingApp");
 const AuthApp = lazy(() => import("./components/AuthApp"));
-("./components/AuthApp");
+const MarketingApp = lazy(() => import("./components/MarketingApp"));
+const DashboardApp = lazy(() => import("./components/DashboardApp"));
 
 export const router = createBrowserRouter([
 	{
@@ -31,23 +32,30 @@ export const router = createBrowserRouter([
 		],
 	},
 	{
+		path: "/dashboard",
+		element: <ProtectedRoute />,
+		errorElement: <ErrorBoundary />,
+		children: [
+			{
+				path: "*?",
+				element: (
+					<Suspense fallback={<Loading />}>
+						<DashboardApp />
+					</Suspense>
+				),
+			},
+		],
+	},
+	{
 		path: "/",
 		element: <AppLayout />,
 		errorElement: <ErrorBoundary />,
 		children: [
 			{
-				index: true,
+				path: "*?",
 				element: (
 					<Suspense fallback={<Loading />}>
-						<MarketingApp />,
-					</Suspense>
-				),
-			},
-			{
-				path: "*",
-				element: (
-					<Suspense fallback={<Loading />}>
-						<MarketingApp />,
+						<MarketingApp />
 					</Suspense>
 				),
 			},
