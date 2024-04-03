@@ -1,6 +1,8 @@
 # Dashboard Microfrontend Apps
 
 [![Build and Deploy container](https://github.com/bugraaydin1/microfrontend-dashboard/actions/workflows/container_deploy.yaml/badge.svg?branch=master&event=push)](https://github.com/bugraaydin1/microfrontend-dashboard/actions/workflows/container_deploy.yaml)
+[![Build and Deploy marketing](https://github.com/bugraaydin1/microfrontend-dashboard/actions/workflows/marketing_deploy.yaml/badge.svg?branch=master&event=push)](https://github.com/bugraaydin1/microfrontend-dashboard/actions/workflows/marketing_deploy.yaml)
+[![Build and Deploy auth](https://github.com/bugraaydin1/microfrontend-dashboard/actions/workflows/auth_deploy.yaml/badge.svg?branch=master&event=push)](https://github.com/bugraaydin1/microfrontend-dashboard/actions/workflows/auth_deploy.yaml)
 
 Monorepo or seperate repos could be used, because of these microfrontend apps will be zero-coupled. For the sake of simplicity it is a monorepo.
 
