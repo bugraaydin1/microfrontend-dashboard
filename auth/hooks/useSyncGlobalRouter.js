@@ -16,7 +16,7 @@ const useSyncGlobalRouter = (basename = "") => {
 
 		const hostNavigated = ({ detail }) => {
 			console.log(
-				"Auth received @host navigated - host:",
+				"Auth received @container navigated - host:",
 				detail,
 				"remote:",
 				location.pathname,

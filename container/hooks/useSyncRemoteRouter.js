@@ -12,7 +12,7 @@ const useSyncRemoteRouter = (basename = "") => {
 
 		const remoteNavigated = ({ detail }) => {
 			console.log(
-				"remote navigated - host:",
+				"remote navigated -host:",
 				location.pathname,
 				"remote:",
 				detail,

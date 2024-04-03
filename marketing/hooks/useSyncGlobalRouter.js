@@ -16,7 +16,7 @@ const useSyncGlobalRouter = (basename = "") => {
 
 		const hostNavigated = ({ detail }) => {
 			console.log(
-				"Marketing received @host navigated - host:",
+				"Marketing received @container navigated - host:",
 				detail,
 				"remote:",
 				location.pathname,
