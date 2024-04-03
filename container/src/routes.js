@@ -7,7 +7,6 @@ import {
 	useRouteError,
 } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
-import Header from "./components/Header";
 import Loading from "./components/Loading";
 
 const MarketingApp = lazy(() => import("./components/MarketingApp"));

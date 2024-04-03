@@ -17,7 +17,7 @@ const RouterHandler = () => {
 
 const isDevelopment = process.env.NODE_ENV === "development";
 
-const routes = [
+const getRoutes = (onSignIn) => [
 	{
 		path: "/auth",
 		element: <RouterHandler />,
@@ -25,11 +25,11 @@ const routes = [
 		children: [
 			{
 				path: "signin",
-				element: <SignIn />,
+				element: <SignIn onSignIn={onSignIn} />,
 			},
 			{
 				path: "signup",
-				element: <SignUp />,
+				element: <SignUp onSignIn={onSignIn} />,
 			},
 		],
 	},
@@ -42,9 +42,9 @@ function ErrorBoundary() {
 	return <div>Page not found!</div>;
 }
 
-export const router = (initialPathname) =>
+export const getRouter = ({ initialPathname, onSignIn }) =>
 	isDevelopment
-		? createBrowserRouter(routes)
-		: createMemoryRouter([routes], {
+		? createBrowserRouter(getRoutes(onSignIn))
+		: createMemoryRouter(getRoutes(onSignIn), {
 				initialEntries: [initialPathname],
 		  });

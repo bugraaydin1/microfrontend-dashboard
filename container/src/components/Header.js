@@ -1,11 +1,16 @@
 import React from "react";
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { useHostContext } from "../../context/hostContext";
 
-const Header = ({ signedIn, onSignOut = () => {} }) => {
+const Header = () => {
+	const { signedIn, setSignedIn } = useHostContext();
+
+	console.log("header ctx:", signedIn);
+
 	const onClick = () => {
 		if (signedIn) {
-			onSignOut();
+			setSignedIn(false);
 		}
 	};
 
